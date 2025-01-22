@@ -1,11 +1,14 @@
 class HashMap {
+    #capacity;
+    #loadFactor;
     #size;
+    #buckets;
 
     constructor (capacity = 16, loadFactor = 0.75) {
-        this.capacity = capacity; // Total number of buckets we currently have
-        this.loadFactor = loadFactor; // Factor that determines when to resize
+        this.#capacity = capacity; // Total number of buckets we currently have
+        this.#loadFactor = loadFactor; // Factor that determines when to resize
         this.#size = 0; // The number of [key, value] pairs in the Hash Map
-        this.buckets = Array(this.capacity).fill(null).map(() => []); // Makes an array of arrays of size capacity, each element will be an array with two elements
+        this.#buckets = Array(this.#capacity).fill(null).map(() => []); // Makes an array of arrays of size capacity, each element will be an array with two elements
     }
 
     hash(key) {
@@ -14,7 +17,7 @@ class HashMap {
         const primeNumber = 31;
         for (let i = 0; i < key.length; i++) {
             hashCode = primeNumber * hashCode + key.charCodeAt(i);
-            hashCode = hashCode % this.capacity;
+            hashCode = hashCode % this.#capacity;
         }
 
         return hashCode;
@@ -24,11 +27,11 @@ class HashMap {
 
         const index = this.hash(key);
 
-        if (index < 0 || index >= this.buckets.length) {
+        if (index < 0 || index >= this.#buckets.length) {
             throw new Error("Trying to access index out of bounds");
         }
           
-        const bucket = this.buckets[index];
+        const bucket = this.#buckets[index];
 
         for (let i = 0; i < bucket.length; i++) {
             const [storedKey, storedValue] = bucket[i];
@@ -41,15 +44,15 @@ class HashMap {
         bucket.push([key, value]);
         this.#size += 1;
 
-        if (this.#size / this.capacity > this.loadFactor) {
+        if (this.#size / this.#capacity > this.#loadFactor) {
             this.#resize();
         }
     }
 
     #resize() {
-        const oldBuckets = this.buckets;
-        this.capacity *= 2;
-        this.buckets = Array(this.capacity).fill(null).map(() => []);
+        const oldBuckets = this.#buckets;
+        this.#capacity *= 2;
+        this.#buckets = Array(this.#capacity).fill(null).map(() => []);
         this.#size = 0;
 
         for (const bucket of oldBuckets) {
@@ -61,7 +64,7 @@ class HashMap {
 
     get(key) {
         const index = this.hash(key);
-        const bucket = this.buckets[index];
+        const bucket = this.#buckets[index];
 
         for (let i = 0; i < bucket.length; i++) {
             const [storedKey, storedValue] = bucket[i];
@@ -75,7 +78,7 @@ class HashMap {
 
     has(key) {
         const index = this.hash(key);
-        const bucket = this.buckets[index];
+        const bucket = this.#buckets[index];
 
         for (let i = 0; i < bucket.length; i++) {
             const [storedKey, storedValue] = bucket[i];
@@ -89,7 +92,7 @@ class HashMap {
 
     remove(key) {
         const index = this.hash(key);
-        const bucket = this.buckets[index];
+        const bucket = this.#buckets[index];
 
         for (let i = 0; i < bucket.length; i++) {
             const [storedKey, storedValue] = bucket[i];
@@ -109,7 +112,7 @@ class HashMap {
     }
 
     clear() {
-        this.buckets = Array(this.capacity).fill(null).map(() => []);
+        this.#buckets = Array(this.#capacity).fill(null).map(() => []);
         this.#size = 0;
     }
 
