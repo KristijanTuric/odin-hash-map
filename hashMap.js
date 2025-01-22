@@ -116,6 +116,18 @@ class HashMap {
         this.#size = 0;
     }
 
+    keys() {
+        let keys = [];
+
+        for (const bucket of this.#buckets) {
+            for (const [key, value] of bucket) {
+                keys[keys.length] = key;
+            }
+        }
+
+        if (keys.length === 0) return null;
+        return keys;
+    }
 }
 
 export { HashMap };
