@@ -11,5 +11,5 @@
   - [x] `length()` -> returns the `number of stored` keys in the hash map
   - [x] `clear()` -> removes all entries in the hash map
   - [x] `keys()` -> returns an `array` containing all the keys inside the hash map
-  - [ ] `values()` -> returns an `array` containing all the values
+  - [x] `values()` -> returns an `array` containing all the values
   - [ ] `entries()` -> returns an `array` containing every `[key, value]` pair stored in the hash map
