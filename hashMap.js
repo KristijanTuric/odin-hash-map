@@ -1,8 +1,10 @@
 class HashMap {
+    #size;
+
     constructor (capacity = 16, loadFactor = 0.75) {
         this.capacity = capacity; // Total number of buckets we currently have
         this.loadFactor = loadFactor; // Factor that determines when to resize
-        this.size = 0; // The number of [key, value] pairs in the Hash Map
+        this.#size = 0; // The number of [key, value] pairs in the Hash Map
         this.buckets = Array(this.capacity).fill(null).map(() => []); // Makes an array of arrays of size capacity, each element will be an array with two elements
     }
 
@@ -37,9 +39,9 @@ class HashMap {
         }
 
         bucket.push([key, value]);
-        this.size += 1;
+        this.#size += 1;
 
-        if (this.size / this.capacity > this.loadFactor) {
+        if (this.#size / this.capacity > this.loadFactor) {
             this.#resize();
         }
     }
@@ -48,7 +50,7 @@ class HashMap {
         const oldBuckets = this.buckets;
         this.capacity *= 2;
         this.buckets = Array(this.capacity).fill(null).map(() => []);
-        this.size = 0;
+        this.#size = 0;
 
         for (const bucket of oldBuckets) {
             for (const [key, value] of bucket) {
@@ -94,12 +96,16 @@ class HashMap {
             if (storedKey === key) {
                 // Remove the [key, value] pair, decrease the size
                 bucket.splice(i, 1);
-                this.size -= 1;
+                this.#size -= 1;
                 return true;
             }
         }
 
         return false;
+    }
+
+    length() {
+        return this.#size;
     }
 
 }
