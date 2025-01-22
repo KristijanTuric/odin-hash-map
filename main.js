@@ -26,3 +26,9 @@ console.log(hashMap.get("kiwi"));
 
 console.log("\nlength() function test\n");
 console.log(hashMap.length());
+
+console.log("\clear() function test\n");
+hashMap.clear();
+console.log(hashMap.get("kiwi"));
+console.log(hashMap.has("apple"));
+console.log(hashMap.length());
