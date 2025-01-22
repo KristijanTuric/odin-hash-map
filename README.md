@@ -12,4 +12,4 @@
   - [x] `clear()` -> removes all entries in the hash map
   - [x] `keys()` -> returns an `array` containing all the keys inside the hash map
   - [x] `values()` -> returns an `array` containing all the values
-  - [ ] `entries()` -> returns an `array` containing every `[key, value]` pair stored in the hash map
+  - [x] `entries()` -> returns an `array` containing every `[key, value]` pair stored in the hash map
