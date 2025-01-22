@@ -27,8 +27,15 @@ console.log(hashMap.get("kiwi"));
 console.log("\nlength() function test\n");
 console.log(hashMap.length());
 
-console.log("\clear() function test\n");
+console.log("\nclear() function test\n");
 hashMap.clear();
 console.log(hashMap.get("kiwi"));
 console.log(hashMap.has("apple"));
 console.log(hashMap.length());
+
+console.log("\keys() function test\n");
+console.log(hashMap.keys());
+hashMap.set("banana", "yellow");
+hashMap.set("kiwi", "green");
+hashMap.set("apple", "red");
+console.log(hashMap.keys());
