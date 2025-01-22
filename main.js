@@ -17,3 +17,9 @@ console.log("\nhas(key) function test\n");
 console.log(hashMap.has("apple"));
 console.log(hashMap.has("ostrich"));
 
+console.log("\nremove(key) function test\n");
+console.log(hashMap.remove("kiwi"));
+console.log(hashMap.get("kiwi"));
+console.log(hashMap.remove("cow"));
+hashMap.set("kiwi", "green");
+console.log(hashMap.get("kiwi"));
