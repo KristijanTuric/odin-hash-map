@@ -9,7 +9,7 @@
   - [x] `has(key)` -> returns `true` or `false` based on whether the key is in the hash map
   - [x] `remove(key)` -> If the given key is in the hash map, it should remove that entry and return `true`, otherwise it should return `false`
   - [x] `length()` -> returns the `number of stored` keys in the hash map
-  - [ ] `clear()` -> removes all entries in the hash map
+  - [x] `clear()` -> removes all entries in the hash map
   - [ ] `keys()` -> returns an `array` containing all the keys inside the hash map
   - [ ] `values()` -> returns an `array` containing all the values
   - [ ] `entries()` -> returns an `array` containing every `[key, value]` pair stored in the hash map
