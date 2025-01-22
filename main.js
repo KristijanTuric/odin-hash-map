@@ -39,3 +39,8 @@ hashMap.set("banana", "yellow");
 hashMap.set("kiwi", "green");
 hashMap.set("apple", "red");
 console.log(hashMap.keys());
+
+console.log("\nvalues() function test\n");
+console.log(hashMap.values());
+hashMap.clear();
+console.log(hashMap.values());
