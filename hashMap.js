@@ -85,6 +85,22 @@ class HashMap {
         return false;
     }
 
+    remove(key) {
+        const index = this.hash(key);
+        const bucket = this.buckets[index];
+
+        for (let i = 0; i < bucket.length; i++) {
+            const [storedKey, storedValue] = bucket[i];
+            if (storedKey === key) {
+                // Remove the [key, value] pair, decrease the size
+                bucket.splice(i, 1);
+                this.size -= 1;
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 }
 
